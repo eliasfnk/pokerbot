@@ -13,10 +13,10 @@ public class Risk {
 
     public Risk(Table table){
         this.table = table;
-        cards = extractCards();
+        cards = extractHandCards();
     }
 
-    public List<Card> extractCards(){
+    public List<Card> extractHandCards(){
         List<Player> players = table.getPlayers();
         Player player = players.get(table.getActivePlayer());
         return player.getCards();
