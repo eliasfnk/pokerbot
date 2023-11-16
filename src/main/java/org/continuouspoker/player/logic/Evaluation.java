@@ -11,7 +11,7 @@ public class Evaluation {
     List<Card> handCards;
     List<Card> tableCards;
     List<Integer> values;
-    int bet;
+    int cardValue;
 
     public Evaluation(Table table) {
         this.table = table;
@@ -21,7 +21,7 @@ public class Evaluation {
         values.add(getCardValue(handCards.get(0)));
         values.add(getCardValue(handCards.get(1)));
 
-        bet = evaluateCardValue();
+        cardValue = evaluateCardValue();
     }
 
     //methode die die Höhe unseren Karten Wert evaluiert
