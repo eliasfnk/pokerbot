@@ -62,31 +62,31 @@ public class Evaluation {
     public int getCardValue(Card card){
         switch (card.getRank()) {
             case _2:
-                return 1;
-            case _3:
                 return 2;
-            case _4:
+            case _3:
                 return 3;
-            case _5:
+            case _4:
                 return 4;
-            case _6:
+            case _5:
                 return 5;
-            case _7:
+            case _6:
                 return 6;
-            case _8:
+            case _7:
                 return 7;
-            case _9:
+            case _8:
                 return 8;
-            case _10:
+            case _9:
                 return 9;
-            case J:
+            case _10:
                 return 10;
-            case Q:
+            case J:
                 return 11;
-            case K:
+            case Q:
                 return 12;
-            case A:
+            case K:
                 return 13;
+            case A:
+                return 14;
             default:
                 return 0;
         }
