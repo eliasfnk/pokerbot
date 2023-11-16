@@ -7,7 +7,7 @@ public class Strategy {
 
    public Bet decide(final Table table) {
       System.out.println(table);
-      return new Bet().bet(100);
+      return new Bet().bet(10);
    }
 
 }
