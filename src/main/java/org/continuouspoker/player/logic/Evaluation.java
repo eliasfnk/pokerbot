@@ -10,7 +10,7 @@ public class Evaluation {
     Table table;
     List<Card> handCards;
     List<Card> tableCards;
-    List<Integer> values;
+    int[] values = new int[2];
     int cardValue;
 
     public Evaluation(Table table) {
@@ -18,8 +18,8 @@ public class Evaluation {
         handCards = getHandCards();
         tableCards = getTableCards();
 
-        values.add(getCardValue(handCards.get(0)));
-        values.add(getCardValue(handCards.get(1)));
+        values[0] = getCardValue(handCards.get(0));
+        values[1] = getCardValue(handCards.get(1));
 
         cardValue = evaluateCardValue();
     }
@@ -28,7 +28,7 @@ public class Evaluation {
     public int evaluateCardValue(){
         //hier methoden einfügen die weitere andere Möglichkeiten, wie zB Zwilling 
 
-        return values.get(0) + values.get(1);
+        return values[0] + values[1];
     }
 
 
