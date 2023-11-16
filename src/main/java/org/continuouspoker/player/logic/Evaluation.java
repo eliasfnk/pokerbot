@@ -33,7 +33,9 @@ public class Evaluation {
             return 0;
         }
         else{
-            return valueSum;
+            int ourChips = table.getPlayers().get(table.getActivePlayer()).getStack();
+            float procentValue = valueSum / 100;
+            return (int)(ourChips / procentValue);
         }
     }
 
