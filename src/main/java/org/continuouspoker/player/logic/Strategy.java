@@ -23,13 +23,7 @@ public class Strategy {
             bet = rnd.nextInt();
       }
 
-      
-      if(evaluation.getFold()){
-            return new Bet().bet(0);
-      }
-      else{
-            return new Bet().bet(bet);
-      }
+      return new Bet().bet(bet);
    }
 
 }

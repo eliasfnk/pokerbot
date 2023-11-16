@@ -28,7 +28,14 @@ public class Evaluation {
     public int evaluateCardValue(){
         //hier methoden einfügen die weitere andere Möglichkeiten, wie zB Zwilling 
 
-        return values[0] + values[1];
+        //methode zur evaluierung des fold werts
+        int valueSum = values[0] + values[1];
+        if(valueSum <= 10){
+            return 0;
+        }
+        else{
+            return valueSum;
+        }
     }
 
 
