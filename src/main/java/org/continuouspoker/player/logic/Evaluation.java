@@ -1,7 +1,6 @@
 package org.continuouspoker.player.logic;
 
 import java.util.List;
-
 import org.continuouspoker.player.model.Card;
 import org.continuouspoker.player.model.Table;
 
@@ -10,7 +9,7 @@ public class Evaluation {
     Table table;
     List<Card> handCards;
     List<Card> tableCards;
-    int[] values = new int[2];
+    int[] cardValues = new int[2];
     int cardValue;
 
     public Evaluation(Table table) {
@@ -18,8 +17,8 @@ public class Evaluation {
         handCards = getHandCards();
         tableCards = getTableCards();
 
-        values[0] = getCardValue(handCards.get(0));
-        values[1] = getCardValue(handCards.get(1));
+        cardValues[0] = cardToInt(handCards.get(0));
+        cardValues[1] = cardToInt(handCards.get(1));
 
         cardValue = evaluateCardValue();
     }
@@ -29,7 +28,7 @@ public class Evaluation {
         //hier methoden einfügen die weitere andere Möglichkeiten, wie zB Zwilling 
 
         //methode zur evaluierung des fold werts
-        int valueSum = values[0] + values[1];
+        int valueSum = cardValues[0] + cardValues[1];
         if(valueSum <= 10){
             return 0;
         }
@@ -59,39 +58,22 @@ public class Evaluation {
         }
     }
 
-    public int getCardValue(Card card){
-        switch (card.getRank()) {
-            case _2:
-                return 2;
-            case _3:
-                return 3;
-            case _4:
-                return 4;
-            case _5:
-                return 5;
-            case _6:
-                return 6;
-            case _7:
-                return 7;
-            case _8:
-                return 8;
-            case _9:
-                return 9;
-            case _10:
-                return 10;
-            case J:
-                return 11;
-            case Q:
-                return 12;
-            case K:
-                return 13;
-            case A:
-                return 14;
-            default:
-                return 0;
-        }
+    public int cardToInt(Card card) {
+        return switch (card.getRank()) {
+            case _2  ->  2;
+            case _3  ->  3;
+            case _4  ->  4;
+            case _5  ->  5;
+            case _6  ->  6;
+            case _7  ->  7;
+            case _8  ->  8;
+            case _9  ->  9;
+            case _10 -> 10;
+            case J   -> 11;
+            case Q   -> 12;
+            case K   -> 13;
+            case A   -> 14;
+        };
     }
-
-    
 
 }

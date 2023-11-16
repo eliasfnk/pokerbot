@@ -15,7 +15,6 @@ public class Strategy {
       try {
          evaluation = new Evaluation(table);
          bet = evaluation.cardValue < table.getMinimumBet()? table.getMinimumBet() : evaluation.cardValue;
-         throw new Exception();
       } catch (Exception e) {
          bet = random.nextInt(100);
       }
