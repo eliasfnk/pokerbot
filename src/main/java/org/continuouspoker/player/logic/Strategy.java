@@ -9,19 +9,27 @@ public class Strategy {
 
       int bet;
       Random rnd = new Random(100);
+      Evaluation evaluation;
 
    public Bet decide(final Table table) {
       System.out.println(table);
       try{
-            Evaluation evaluation = new Evaluation(table);
+            evaluation = new Evaluation(table);
       
             //wenn cardvalue unter minimum bet ist ist bet = minimum bet
             bet = evaluation.cardValue < table.getMinimumBet()? table.getMinimumBet() : evaluation.cardValue;
+
       }catch(Exception e){
             bet = rnd.nextInt();
       }
 
-      return new Bet().bet(bet);
+      
+      if(evaluation.getFold()){
+            return new Bet().bet(0);
+      }
+      else{
+            return new Bet().bet(bet);
+      }
    }
 
 }

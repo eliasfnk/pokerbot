@@ -42,6 +42,16 @@ public class Evaluation {
         return table.getCommunityCards();
     }
 
+    //wenn cardValue zu niedrig ist gehen wir einfaqch aus der runde
+    public boolean getFold(){
+        if(cardValue < 10){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public int getCardValue(Card card){
         switch (card.getRank()) {
             case _2:
