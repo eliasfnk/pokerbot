@@ -2,6 +2,7 @@
 
 # Poker Player (Quarkus)
 # elias stinkt
+## (Oli stinkt noch mehr)
 
 Your task is to implement the best poker player logic! :)
 
