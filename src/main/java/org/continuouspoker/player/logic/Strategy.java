@@ -7,6 +7,7 @@ public class Strategy {
 
    public Bet decide(final Table table) {
       System.out.println(table);
+      Risk risk = new Risk(table);
       return new Bet().bet(100);
    }
 
