@@ -9,24 +9,27 @@ import org.continuouspoker.player.model.Table;
 public class Risk {
 
     Table table;
-    List<Card> cards;
+    List<Card> handCards;
+    List<Card> tableCards;
     List<Integer> values;
 
-    public Risk(Table table){
+    public Risk(Table table) {
         this.table = table;
-        cards = extractHandCards();
-
-        //werte der Karten zurückgeben
-        values.add(getCardValue(cards.get(0)));
-        values.add(getCardValue(cards.get(1)));
+        handCards = getHandCards();
+        tableCards = getTableCards();
+        values.add(getCardValue(handCards.get(0)));
+        values.add(getCardValue(handCards.get(1)));
     }
 
 
-    //methode um unsere Karten zu bekommen
-    public List<Card> extractHandCards(){
-        List<Player> players = table.getPlayers();
-        Player player = players.get(table.getActivePlayer());
-        return player.getCards();
+    // Handkarten
+    public List<Card> getHandCards() {
+        return table.getPlayers().get(table.getActivePlayer()).getCards();
+    }
+
+    // Tischkarten
+    public List<Card> getTableCards() {
+        return table.getCommunityCards();
     }
 
     public int getCardValue(Card card){
@@ -61,4 +64,7 @@ public class Risk {
                 return 0;
         }
     }
+
+    
+
 }
