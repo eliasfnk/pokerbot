@@ -3,17 +3,16 @@ package org.continuouspoker.player.logic;
 import java.util.List;
 
 import org.continuouspoker.player.model.Card;
-import org.continuouspoker.player.model.Player;
 import org.continuouspoker.player.model.Table;
 
-public class Risk {
+public class Evaluation {
 
     Table table;
     List<Card> handCards;
     List<Card> tableCards;
     List<Integer> values;
 
-    public Risk(Table table) {
+    public Evaluation(Table table) {
         this.table = table;
         handCards = getHandCards();
         tableCards = getTableCards();
