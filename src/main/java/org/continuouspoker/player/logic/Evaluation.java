@@ -8,37 +8,15 @@ public class Evaluation {
 
     Table table;
     List<Card> handCards;
-    List<Card> tableCards;
-    int[] cardValues = new int[2];
-    int cardValue;
+    int[] handCardValues;
+    int result;
 
     public Evaluation(Table table) {
         this.table = table;
         handCards = getHandCards();
-        tableCards = getTableCards();
-
-        cardValues[0] = cardToInt(handCards.get(0));
-        cardValues[1] = cardToInt(handCards.get(1));
-
-        cardValue = evaluateCardValue();
+        handCardValues = getHandCardValues(handCards);
+        result = evaluateHandCardValues();
     }
-
-    //methode die die Höhe unseren Karten Wert evaluiert
-    public int evaluateCardValue(){
-        //hier methoden einfügen die weitere andere Möglichkeiten, wie zB Zwilling 
-
-        //methode zur evaluierung des fold werts
-        int valueSum = cardValues[0] + cardValues[1];
-        if(valueSum <= 10){
-            return 0;
-        }
-        else{
-            int ourChips = table.getPlayers().get(table.getActivePlayer()).getStack();
-            float procentValue = valueSum / 100;
-            return (int)(ourChips / procentValue);
-        }
-    }
-
 
     // Handkarten als Card Liste
     public List<Card> getHandCards() {
@@ -50,25 +28,20 @@ public class Evaluation {
         return new int[] { cardToInt(handCards.get(0)), cardToInt(handCards.get(1)) };
     }
 
-    // Tischkarten als Card Liste
-    public List<Card> getTableCards() {
-        return table.getCommunityCards();
+    // Handkarten evaluieren
+    public int evaluateHandCardValues() {
+        int sum = handCardValues[0] + handCardValues[1];
+        if ( handCardValues[0] == handCardValues[1] ) {
+            sum *= 2;
+        } else if (sum <= 10) {
+            return 0;
+        }
+        int currentChipCount = table.getPlayers().get(table.getActivePlayer()).getStack();
+        double percentValue = (double) sum / 56;
+        return (int) (currentChipCount * percentValue);
     }
 
-    // Tischkarten als Integer Array
-    //public int[] getTableCardValues(List<Card> tableCards) {
-    //    return new int[] { cardToInt(tableCards.get(0)), cardToInt(tableCards.get(1)) };
-    //}
-
-    //wenn cardValue zu niedrig ist gehen wir einfaqch aus der runde
-    public boolean getFold(){
-        if(cardValue < 10){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    // hier könnte ein sinnvoller Kommentar stehen
 
     public int cardToInt(Card card) {
         return switch (card.getRank()) {

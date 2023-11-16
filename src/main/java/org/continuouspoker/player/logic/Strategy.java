@@ -14,7 +14,11 @@ public class Strategy {
       System.err.println("Hallo liest das hier jmd???");
       try {
          evaluation = new Evaluation(table);
-         bet = evaluation.cardValue < table.getMinimumBet()? table.getMinimumBet() : evaluation.cardValue;
+         if (evaluation.result == 0) {
+            bet = 0;
+         } else {
+            bet = evaluation.result < table.getMinimumBet() ? table.getMinimumBet() : evaluation.result;
+         }
       } catch (Exception e) {
          bet = random.nextInt(100);
       }
