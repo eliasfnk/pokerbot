@@ -38,15 +38,25 @@ public class Evaluation {
     }
 
 
-    // Handkarten
+    // Handkarten als Card Liste
     public List<Card> getHandCards() {
         return table.getPlayers().get(table.getActivePlayer()).getCards();
     }
 
-    // Tischkarten
+    // Handkarten als Integer Array
+    public int[] getHandCardValues(List<Card> handCards) {
+        return new int[] { cardToInt(handCards.get(0)), cardToInt(handCards.get(1)) };
+    }
+
+    // Tischkarten als Card Liste
     public List<Card> getTableCards() {
         return table.getCommunityCards();
     }
+
+    // Tischkarten als Integer Array
+    //public int[] getTableCardValues(List<Card> tableCards) {
+    //    return new int[] { cardToInt(tableCards.get(0)), cardToInt(tableCards.get(1)) };
+    //}
 
     //wenn cardValue zu niedrig ist gehen wir einfaqch aus der runde
     public boolean getFold(){
