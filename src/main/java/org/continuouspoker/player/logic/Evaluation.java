@@ -37,7 +37,7 @@ public class Evaluation {
             return 0;
         }
         int currentChipCount = table.getPlayers().get(table.getActivePlayer()).getStack();
-        double percentValue = (double) sum / 56;
+        double percentValue = (double) sum / 100;
         return (int) (currentChipCount * percentValue);
     }
 
