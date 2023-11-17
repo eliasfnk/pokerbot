@@ -1,6 +1,8 @@
 package org.continuouspoker.player.logic;
 
 import java.util.List;
+import java.util.Random;
+
 import org.continuouspoker.player.model.Card;
 import org.continuouspoker.player.model.Table;
 
@@ -30,6 +32,8 @@ public class Evaluation {
 
     // Handkarten evaluieren
     public int evaluateHandCardValues() {
+        Random rnd = new Random();
+
         int sum = handCardValues[0] + handCardValues[1];
         if ( handCardValues[0] == handCardValues[1] ) {
             sum *= 2;
@@ -38,7 +42,8 @@ public class Evaluation {
         }
         int currentChipCount = table.getPlayers().get(table.getActivePlayer()).getStack();
         double percentValue = (double) sum / 56;
-        return (int) (currentChipCount * percentValue);
+        float magic = rnd.nextFloat(0.9f, 1.1f);
+        return (int) (currentChipCount * percentValue * magic);
     }
 
     // hier könnte ein sinnvoller Kommentar stehen
