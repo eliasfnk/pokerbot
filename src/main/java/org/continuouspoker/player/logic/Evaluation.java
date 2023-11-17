@@ -44,7 +44,7 @@ public class Evaluation {
         double percentValue = (double) sum / 56;
         float magic = rnd.nextFloat(0.9f, 1.1f);
         return (int) (currentChipCount * percentValue * magic);
-    }
+        }
 
     // hier könnte ein sinnvoller Kommentar stehen
 

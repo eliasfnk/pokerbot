@@ -11,7 +11,6 @@ public class Strategy {
    Random random = new Random();
 
    public Bet decide(final Table table) {
-      System.err.println("Hallo liest das hier jmd???");
       try {
          evaluation = new Evaluation(table);
          if (evaluation.result == 0) {
