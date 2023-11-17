@@ -47,7 +47,7 @@ public class Evaluation {
             sum *= 2;
         }
         //falls einsatz == chipcount karten wert zum aussteigen erhöhen
-        else if( table.getMinimumBet() == table.getPlayers().get(table.getActivePlayer()).getStack()){
+        else if( table.getMinimumBet() == table.getPlayers().get(table.getActivePlayer()).getStack() && table.getRound() == 1){
             //bet wenn hand hoch genug ist
             if(sum <= 16){
                 return bet;
