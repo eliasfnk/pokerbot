@@ -35,16 +35,35 @@ public class Evaluation {
         Random rnd = new Random();
 
         int sum = handCardValues[0] + handCardValues[1];
-        if ( handCardValues[0] == handCardValues[1] ) {
-            sum *= 2;
-        } else if (sum <= 10) {
-            return 0;
-        }
+
         int currentChipCount = table.getPlayers().get(table.getActivePlayer()).getStack();
         double percentValue = (double) sum / 56;
         float magic = rnd.nextFloat(0.9f, 1.1f);
-        return (int) (currentChipCount * percentValue * magic);
+
+        int bet = (int)(currentChipCount * percentValue * magic);
+
+        //falls zwilling einsatz erhöhen
+        if ( handCardValues[0] == handCardValues[1] ){
+            sum *= 2;
         }
+        //falls einsatz == chipcount karten wert zum aussteigen erhöhen
+        else if( table.getMinimumBet() == table.getPlayers().get(table.getActivePlayer()).getStack()){
+            //bet wenn hand hoch genug ist
+            if(sum <= 16){
+                return bet;
+            }
+            else{
+                return 0;
+            }
+        }
+        //falls karten zu schlecht steigen wir aus
+        else if (sum <= 10) {
+            return 0;
+        }
+
+        //falls all dies nicht eintritt bet zurpckgeben
+        return bet;
+    }
 
     // hier könnte ein sinnvoller Kommentar stehen
 
@@ -63,6 +82,7 @@ public class Evaluation {
             case Q   -> 12;
             case K   -> 13;
             case A   -> 14;
+            default -> 0;
         };
     }
 
